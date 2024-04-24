@@ -43,7 +43,7 @@ if ingredients_list:
     #loop for
     for fruit_chosen in ingredients_list:
         ingredients_string+= fruit_chosen #+ añade fruit_chosen a lo que ya existe
-        st.subheader(fruit_chosen + ' Nutrition Information')
+
     
     #st.write(ingredients_string)
     

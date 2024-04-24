@@ -1,5 +1,6 @@
 # Import python packages
 import streamlit as st
+from snowflake.snowpark.functions import col
 import requests
 
 
@@ -10,16 +11,15 @@ st.write(
     """
 )
 
-#librería col
-
-from snowflake.snowpark.functions import col
+name_on_order = st.text_input('Name on Smoothie:')
+st.write('The name on your Smoothie will be:', name_on_order)
 
 #seleccino la columna
 
 cnx=st.connection("snowflake")
 session = cnx.session()
 my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'))
-st.dataframe(data=my_dataframe, use_container_width=True)
+#st.dataframe(data=my_dataframe, use_container_width=True)
 
 #añado multiselect
 
@@ -29,8 +29,8 @@ ingredients_list=st.multiselect(
 )
 
 #los datos devueltos son listas
-st.write(ingredients_list)
-st.text(ingredients_list)
+#st.write(ingredients_list)
+#st.text(ingredients_list)
 
 # "if ingredients_list" significa "if ingredients_list is not null" 
 
